@@ -6,9 +6,9 @@ CREATE TABLE `student` (
   `cohort` int(11) DEFAULT NULL,
   `afstudeer_jaar` int(11) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
-  `geslacht` char(1) DEFAULT NULL,
-  `orientatie` char(1) DEFAULT NULL,
-  `studie_status` char(1) DEFAULT NULL,
+  `geslacht` varchar(5) DEFAULT NULL,
+  `orientatie` char(20) DEFAULT NULL,
+  `studie_status` char(20) DEFAULT NULL,
   PRIMARY KEY (`studentennummer`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
