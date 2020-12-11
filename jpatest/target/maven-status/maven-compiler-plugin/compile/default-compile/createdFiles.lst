@@ -1,0 +1,9 @@
+com/elektrotechniek/jpatest/backend/RapportRepository.class
+com/elektrotechniek/jpatest/backend/VakRepository.class
+com/elektrotechniek/jpatest/backend/exceptions/StudentNotFoundException.class
+com/elektrotechniek/jpatest/JpatestApplication.class
+com/elektrotechniek/jpatest/backend/StudentRepository.class
+com/elektrotechniek/jpatest/backend/Student.class
+com/elektrotechniek/jpatest/backend/StudentController.class
+com/elektrotechniek/jpatest/backend/Vak.class
+com/elektrotechniek/jpatest/backend/Rapport.class
