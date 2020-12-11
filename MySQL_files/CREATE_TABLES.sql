@@ -1,20 +1,20 @@
- 
+
 CREATE TABLE `student` (
   `studentennummer` int(10) NOT NULL,
-  `naam` varchar(20) DEFAULT NULL,
-  `achternaam` varchar(20) DEFAULT NULL,
-  `cohort` int(11) DEFAULT NULL,
+  `naam` varchar(20) NOT NULL,
+  `achternaam` varchar(20) NOT NULL,
+  `cohort` int(11) NOT NULL,
   `afstudeer_jaar` int(11) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
-  `geslacht` varchar(5) DEFAULT NULL,
-  `orientatie` char(20) DEFAULT NULL,
-  `studie_status` char(20) DEFAULT NULL,
+  `geslacht` varchar(5) NOT NULL,
+  `orientatie` varchar(20) DEFAULT NULL,
+  `studie_status` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`studentennummer`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 CREATE TABLE `vak` (
-  `idvak` int(11) NOT NULL,
+  `idvak` int(5) NOT NULL,
   `vak_naam` varchar(80) DEFAULT NULL,
   `studiepunten` float DEFAULT NULL,
   `semester` int(11) DEFAULT NULL,
@@ -23,13 +23,12 @@ CREATE TABLE `vak` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
-CREATE TABLE `student_maakt_vak` (
+CREATE TABLE `rapport` (
   `student_studentennummer` int(10) NOT NULL,
-  `vak_idvak` int(11) NOT NULL,
-  `periode` char(1) NOT NULL,
-  `jaar` int(11) NOT NULL,
+  `vak_idvak` int(5) NOT NULL,
+  `datum` date NOT NULL,
   `cijfer` float DEFAULT NULL,
-  PRIMARY KEY (`student_studentennummer`,`vak_idvak`,`periode`,`jaar`),
+  PRIMARY KEY (`student_studentennummer`,`vak_idvak`,`datum`),
   KEY `fk_student_has_vak_vak1_idx` (`vak_idvak`),
   KEY `fk_student_has_vak_student_idx` (`student_studentennummer`),
   CONSTRAINT `fk_student_has_vak_student` FOREIGN KEY (`student_studentennummer`) REFERENCES `student` (`studentennummer`) ON DELETE NO ACTION ON UPDATE NO ACTION,
