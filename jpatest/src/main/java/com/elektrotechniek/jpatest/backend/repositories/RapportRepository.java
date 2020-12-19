@@ -3,6 +3,8 @@ package com.elektrotechniek.jpatest.backend.repositories;
 import com.elektrotechniek.jpatest.backend.Rapport;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 public interface RapportRepository extends JpaRepository<Rapport, Integer> {
 
 }
