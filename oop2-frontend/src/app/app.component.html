@@ -1,0 +1,26 @@
+<div class="position-sticky" style="z-index: 1; top: 0">
+  <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a routerLink="studenten"
+           routerLinkActive="active"
+           class="nav-link">Studenten</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="add-student"
+           routerLinkActive="active"
+           class="nav-link" >Add student</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="vakken"
+           routerLinkActive="active"
+           class="nav-link" >Vakken</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>
+
