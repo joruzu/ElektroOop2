@@ -1,0 +1,26 @@
+<h3 [(ngModel)]="vakid">Cijferlijst {{vak.vak_naam}}</h3>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Naam</th>
+    <th>Vak</th>
+    <th>Semester</th>
+    <th>Vak Orientatie</th>
+    <th>Datum</th>
+    <th>Cijfer</th>
+  </tr>
+  </thead>
+  <tbody>
+  <ng-container *ngFor="let raport of rapporten">
+    <tr *ngIf="raport.vak.idvak==vakid">
+      <td>{{raport.student.achternaam}} {{raport.student.naam}}</td>
+      <td>{{raport.vak.vak_naam}}</td>
+      <td>{{raport.vak.semester}}</td>
+      <td>{{raport.vak.vak_orientatie}}</td>
+      <td>{{raport.datum}}</td>
+      <td>{{raport.cijfer}}</td>
+    </tr>
+  </ng-container>
+  </tbody>
+</table>

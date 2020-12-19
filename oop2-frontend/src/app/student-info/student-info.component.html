@@ -1,0 +1,39 @@
+<h3>Student Info</h3>
+<div class="studentInfo">
+  <div>
+    <label><b>Studentennummer: </b></label> {{student.studentennummer}}
+  </div>
+  <div>
+    <label><b>Voornaam: </b></label> {{student.naam}}
+  </div>
+  <div>
+    <label><b>Achternaam: </b></label> {{student.achternaam}}
+  </div>
+  <div>
+    <label><b>Cohort: </b></label> {{student.cohort}}
+  </div>
+  <div>
+    <label><b>Afstudeerjaar: </b></label> {{student.afstudeer_jaar}}
+  </div>
+  <div>
+    <label><b>Email: </b></label> {{student.email}}
+  </div>
+  <div>
+    <label><b>Geslacht: </b></label> {{student.geslacht}}
+  </div>
+  <div>
+    <label><b>Orientatie: </b></label> {{student.orientatie}}
+  </div>
+  <div>
+    <label><b>Studie Status: </b></label> {{student.studie_status}}
+  </div>
+</div>
+
+<div>
+  <button (click)="goToUpdateStudent()"
+          class="btn btn-danger"
+          style="margin-top: 20px">Update Student</button>
+  <button (click)="goToStudentList()"
+          class="btn btn-secondary"
+          style="margin-top: 20px; margin-left: 5px">Terug naar Studentenlijst</button>
+</div>

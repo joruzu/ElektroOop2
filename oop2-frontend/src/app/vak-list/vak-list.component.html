@@ -1,0 +1,29 @@
+<h2>Vakken</h2>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Vak Id</th>
+      <th>Naam</th>
+      <th>Studiepunten</th>
+      <th>Semester</th>
+      <th>Orientatie</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let vak of vakken">
+      <tr>
+        <td>{{vak.idvak}}</td>
+        <td>{{vak.vak_naam}}</td>
+        <td>{{vak.studiepunten}}</td>
+        <td>{{vak.semester}}</td>
+        <td>{{vak.vak_orientatie}}</td>
+        <td>
+          <button (click)="goToVakRapport(vak.idvak)"
+                  class="btn btn-primary">Cijferlijst</button>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>

@@ -1,0 +1,28 @@
+<h4 [(ngModel)]="studid" style="padding: 10px">Cijfers van student: {{studid}}</h4>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Naam</th>
+      <th>Vak</th>
+      <th>Semester</th>
+      <th>Vak Orientatie</th>
+      <th>Datum</th>
+      <th>Cijfer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let raport of rapporten">
+      <tr *ngIf="raport.student.studentennummer==studid">
+        <td>{{raport.student.achternaam}} {{raport.student.naam}}</td>
+        <td>{{raport.vak.vak_naam}}</td>
+        <td>{{raport.vak.semester}}</td>
+        <td>{{raport.vak.vak_orientatie}}</td>
+        <td>{{raport.datum}}</td>
+        <td>{{raport.cijfer}}</td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
+
+

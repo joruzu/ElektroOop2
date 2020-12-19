@@ -1,0 +1,43 @@
+<h2>Studentenlijst</h2>
+<input type="text" [(ngModel)]="searchTerm" (ngModelChange)="onSearchTermChange()" name="searchTerm" placeholder="Search">
+<label style="margin-left: 40px">studie_status:</label>
+<select class="input" id="status" [(ngModel)]="status" name="status" style="margin-left: 10px">
+  <option *ngFor="let stat of studiestatussen" [value]='stat'>{{stat}}</option>
+</select>
+<label style="margin-left: 40px">orientatie:</label>
+<select class="input" id="orientatie" [(ngModel)]="orientatie" name="orientatie" style="margin-left: 10px">
+  <option *ngFor="let orient of orientaties" [value]='orient'>{{orient}}</option>
+  <option value="">geen</option>
+</select>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Studentnummer</th>
+      <th>Naam</th>
+      <th>Achternaam</th>
+      <th>Studie Status</th>
+      <th>Orientatie</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let stud of students">
+      <tr *ngIf="status=='any'&&orientatie=='all'||stud.studie_status==status&&orientatie=='all'
+        ||stud.orientatie==orientatie&&status=='any'||stud.studie_status==status&&stud.orientatie==orientatie">
+        <td>{{stud.studentennummer}}</td>
+        <td>{{stud.naam}}</td>
+        <td>{{stud.achternaam}}</td>
+        <td>{{stud.studie_status}}</td>
+        <td>{{stud.orientatie}}</td>
+        <td>
+          <button (click)="goToStudentInfo(stud.studentennummer)"
+                  class="btn btn-info" style="padding: 4px">Info</button>
+          <button (click)="goToStudentRapport(stud.studentennummer)"
+                  class="btn btn-info"
+                  style="margin-left: 10px; padding: 4px">Rapport</button>
+        </td>
+
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
