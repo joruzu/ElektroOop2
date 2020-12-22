@@ -1,4 +1,4 @@
-<h2>Studentenlijst</h2>
+<h2 style="padding: 10px;">Studentenlijst</h2>
 <input type="text" [(ngModel)]="searchTerm" (ngModelChange)="onSearchTermChange()" name="searchTerm" placeholder="Search">
 <label style="margin-left: 40px">studie_status:</label>
 <select class="input" id="status" [(ngModel)]="status" name="status" style="margin-left: 10px">
@@ -31,9 +31,9 @@
         <td>{{stud.orientatie}}</td>
         <td>
           <button (click)="goToStudentInfo(stud.studentennummer)"
-                  class="btn btn-info" style="padding: 4px">Info</button>
+                  class="btn btn-light btn-outline-primary" style="padding: 4px">Info</button>
           <button (click)="goToStudentRapport(stud.studentennummer)"
-                  class="btn btn-info"
+                  class="btn btn-light btn-outline-primary"
                   style="margin-left: 10px; padding: 4px">Rapport</button>
         </td>
 

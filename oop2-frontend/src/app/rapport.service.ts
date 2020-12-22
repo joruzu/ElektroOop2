@@ -11,7 +11,36 @@ export class RapportService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getRapportenList(): Observable<Rapport[]> {
-    return this.httpClient.get<Rapport[]>(`${this.rapportURL}`);
+  getRapportenList(student: string, jaar: string, vak: string): Observable<Rapport[]> {
+    if(student=="" && jaar=="" && vak=="") {
+      return this.httpClient.get<Rapport[]>(`${this.rapportURL}`);
+    }
+    else if(student!="" && jaar!="") {
+      return this.httpClient.get<Rapport[]>(`${this.rapportURL}?student=${student}&jaar=${jaar}`);
+    }
+    else if(vak!="" && jaar!="") {
+      return this.httpClient.get<Rapport[]>(`${this.rapportURL}?vak=${vak}&jaar=${jaar}`);
+    }
+    else if(student!="" && jaar=="") {
+      return this.httpClient.get<Rapport[]>(`${this.rapportURL}?student=${student}`);
+    }
+    else if(jaar!="" && student=="") {
+      return this.httpClient.get<Rapport[]>(`${this.rapportURL}?jaar=${jaar}`);
+    }
+    else if(vak!="" && jaar=="") {
+      return this.httpClient.get<Rapport[]>(`${this.rapportURL}?vak=${vak}`);
+    }
+    else if(jaar!="" && vak=="") {
+      return this.httpClient.get<Rapport[]>(`${this.rapportURL}?jaar=${jaar}`);
+    }
+
+  }
+
+  createRapport(studid: number, vakid: number, datum: string, cijfer: number): Observable<Object> {
+    return this.httpClient.post(`${this.rapportURL}?studid=${studid}&vakid=${vakid}&datum=${datum}&cijfer=${cijfer}`, "");
+  }
+
+  deleteRapport(rapportid: number): Observable<Object> {
+    return this.httpClient.delete(`${this.rapportURL}/${rapportid}`)
   }
 }

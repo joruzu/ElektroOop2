@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
 export class CreateStudentComponent implements OnInit {
   student: Student = new Student();
   geslachten = ['man', 'vrouw'];
-  orientatie = ['telecommunicatie', 'informatica', 'Energietechniek', ''];
+  orientatie = ['telecommunicatie', 'informatica', 'Energietechniek'];
   studiestatus = ['Actief', 'Inactief', 'Voldaan'];
 
   constructor(private studentService: StudentService,

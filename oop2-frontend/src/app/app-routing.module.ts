@@ -7,6 +7,9 @@ import {UpdateStudentComponent} from "./update-student/update-student.component"
 import {StudentRapportComponent} from "./student-rapport/student-rapport.component";
 import {VakListComponent} from "./vak-list/vak-list.component";
 import {VakRapportComponent} from "./vak-rapport/vak-rapport.component";
+import {CreateVakComponent} from "./create-vak/create-vak.component";
+import {UpdateVakComponent} from "./update-vak/update-vak.component";
+import {CreateRapportVakComponent} from "./create-rapport-vak/create-rapport-vak.component";
 
 const routes: Routes = [
   {path: 'studenten', component: StudentListComponent},
@@ -16,7 +19,10 @@ const routes: Routes = [
   {path: 'studenten/:studid/update-student', component: UpdateStudentComponent},
   {path: 'studenten/:studid/rapport', component: StudentRapportComponent},
   {path: 'vakken', component: VakListComponent},
-  {path: 'vakken/:vakid/rapport', component: VakRapportComponent}
+  {path: 'vakken/:vakid/rapport', component: VakRapportComponent},
+  {path: 'vakken/add-vak', component: CreateVakComponent},
+  {path: 'vakken/:vakid/update-vak', component: UpdateVakComponent},
+  {path: 'vakken/:vakid/rapport/add-rapport', component: CreateRapportVakComponent}
 ];
 
 @NgModule({

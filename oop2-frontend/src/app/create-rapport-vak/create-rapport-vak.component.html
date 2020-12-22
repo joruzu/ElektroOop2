@@ -1,0 +1,29 @@
+<div class="container">
+
+  <h3 style="padding: 10px">Add new rapport for vak: {{vak.vak_naam}}</h3>
+  <button (click)="checkExist()" class="btn btn-light">Check if Student Exists</button>
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Studentennummer</label>
+      <input type="text" class="form-control" id="studid"
+             [(ngModel)]="studid" name="studid" required>
+      <div class="alert alert-success" *ngIf="student.studentennummer==studid&&studid!=null">Student exists</div>
+      <div class="alert alert-danger"
+           *ngIf="exists==false||exists==true&&student.studentennummer==null||student.studentennummer!=studid">Student does not exist</div>
+    </div>
+    <div class="form-group">
+      <label>Datum</label>
+      <input type="text" class="form-control" id="datum"
+             [(ngModel)]="rapport.datum" name="datum" required placeholder="YYYY-MM-DD">
+    </div>
+    <div class="form-group">
+      <label>Cijfer</label>
+      <input type="text" class="form-control" id="cijfer"
+             [(ngModel)]="rapport.cijfer" name="cijfer" required>
+    </div>
+
+    <button class="btn btn-success" type="submit">Submit</button>
+  </form>
+
+</div>

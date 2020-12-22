@@ -1,25 +1,50 @@
-<h4 [(ngModel)]="studid" style="padding: 10px">Cijfers van student: {{studid}}</h4>
+<div class="row" style="padding: 15px">
+  <h3>Cijfers van student: {{student.naam}} {{student.achternaam}}</h3>
+  <button (click)="goToStudentInfo(student.studentennummer)"
+          class="btn btn-light btn-outline-primary"
+          style="margin-left: 20px; height: 40px">Student Info</button>
+</div>
+
+
+<label>vak_naam:</label>
+<input type="text" [(ngModel)]="vakSearch" (ngModelChange)="onVakSearchChange($event)" name="vakSearch"
+       placeholder="Search" style="margin-left: 5px">
+<label style="margin-left: 40px">jaar:</label>
+<input type="text" [(ngModel)]="jaarSearch" (ngModelChange)="onJaarSearchChange($event)" name="jaarSearch"
+       placeholder="Search" style="margin-left: 5px">
+<label style="margin-left: 40px">semester:</label>
+<select class="input" id="semester" [(ngModel)]="semester" name="semester" style="margin-left: 10px">
+  <option hidden disabled>all</option>
+  <option value=0>all</option>
+  <option *ngFor="let semes of semesters" [value]='semes'>{{semes}}</option>
+</select>
 
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Naam</th>
+      <th>Studentnummer</th>
       <th>Vak</th>
       <th>Semester</th>
       <th>Vak Orientatie</th>
       <th>Datum</th>
       <th>Cijfer</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <ng-container *ngFor="let raport of rapporten">
-      <tr *ngIf="raport.student.studentennummer==studid">
-        <td>{{raport.student.achternaam}} {{raport.student.naam}}</td>
-        <td>{{raport.vak.vak_naam}}</td>
-        <td>{{raport.vak.semester}}</td>
-        <td>{{raport.vak.vak_orientatie}}</td>
-        <td>{{raport.datum}}</td>
-        <td>{{raport.cijfer}}</td>
+      <tr *ngIf="raport.student.studentennummer==student.studentennummer">
+        <ng-container *ngIf="semester==0||raport.vak.semester==semester">
+          <td>{{raport.student.studentennummer}}</td>
+          <td>{{raport.vak.vak_naam}}</td>
+          <td>{{raport.vak.semester}}</td>
+          <td>{{raport.vak.vak_orientatie}}</td>
+          <td>{{raport.datum}}</td>
+          <td>{{raport.cijfer}}</td>
+          <td>
+            <button (click)="deleteRapport(raport.rapport_id)" class="btn btn-light btn-outline-danger">Delete</button>
+          </td>
+        </ng-container>
       </tr>
     </ng-container>
   </tbody>

@@ -18,4 +18,16 @@ export class VakService {
   getVakById(id: number): Observable<Vak> {
     return this.httpClient.get<Vak>(`${this.vakURL}/${id}`);
   }
+
+  createVak(vak: Vak): Observable<Object> {
+    return this.httpClient.post(`${this.vakURL}`, vak);
+  }
+
+  updateVak(vakid: number, vak: Vak): Observable<Object> {
+    return this.httpClient.put(`${this.vakURL}/${vakid}`, vak);
+  }
+
+  deleteVak(vakid: number): Observable<Object> {
+    return this.httpClient.delete(`${this.vakURL}/${vakid}`);
+  }
 }

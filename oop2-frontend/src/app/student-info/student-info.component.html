@@ -1,4 +1,9 @@
+<div class="row" style="padding: 10px">
 <h3>Student Info</h3>
+<button (click)="goToStudentRapport(student.studentennummer)"
+        class="btn btn-light btn-outline-primary"
+        style="margin-left: 20px; height: 40px">Rapport</button>
+</div>
 <div class="studentInfo">
   <div>
     <label><b>Studentennummer: </b></label> {{student.studentennummer}}
@@ -31,9 +36,14 @@
 
 <div>
   <button (click)="goToUpdateStudent()"
-          class="btn btn-danger"
+          class="btn btn-light btn-outline-warning"
           style="margin-top: 20px">Update Student</button>
   <button (click)="goToStudentList()"
-          class="btn btn-secondary"
+          class="btn btn-light btn-outline-secondary"
           style="margin-top: 20px; margin-left: 5px">Terug naar Studentenlijst</button>
 </div>
+  <button (click)="deleteStudent(student.studentennummer, student.naam, student.achternaam)"
+          class="btn btn-light btn-outline-danger"
+          style="margin-top: 10px">Delete Student</button>
+
+

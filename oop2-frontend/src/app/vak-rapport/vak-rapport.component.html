@@ -1,25 +1,37 @@
-<h3 [(ngModel)]="vakid">Cijferlijst {{vak.vak_naam}}</h3>
+<div style="padding: 15px">
+  <h3 >Cijferlijst {{vak.vak_naam}}</h3>
+  <button (click)="goToCreateRapportVak(vak.idvak)" class="btn btn-light btn-outline-primary">Add new Cijfer</button>
+</div>
+
+<label>student_naam:</label>
+<input type="text" [(ngModel)]="studentSearch" (ngModelChange)="onStudentSearchChange($event)" name="studentSearch"
+       placeholder="Search" style="margin-left: 5px">
+<label style="margin-left: 40px">jaar:</label>
+<input type="text" [(ngModel)]="jaarSearch" (ngModelChange)="onJaarSearchChange($event)" name="jaarSearch"
+       placeholder="Search" style="margin-left: 5px">
 
 <table class="table table-striped">
   <thead>
   <tr>
+    <th>Studentnummer</th>
     <th>Naam</th>
-    <th>Vak</th>
-    <th>Semester</th>
-    <th>Vak Orientatie</th>
+    <th>Studie Status</th>
     <th>Datum</th>
     <th>Cijfer</th>
+    <th></th>
   </tr>
   </thead>
   <tbody>
   <ng-container *ngFor="let raport of rapporten">
-    <tr *ngIf="raport.vak.idvak==vakid">
+    <tr *ngIf="raport.vak.idvak==vak.idvak">
+      <td>{{raport.student.studentennummer}}</td>
       <td>{{raport.student.achternaam}} {{raport.student.naam}}</td>
-      <td>{{raport.vak.vak_naam}}</td>
-      <td>{{raport.vak.semester}}</td>
-      <td>{{raport.vak.vak_orientatie}}</td>
+      <td>{{raport.student.studie_status}}</td>
       <td>{{raport.datum}}</td>
       <td>{{raport.cijfer}}</td>
+      <td>
+        <button (click)="deleteRapport(raport.rapport_id)" class="btn btn-light btn-outline-danger">Delete</button>
+      </td>
     </tr>
   </ng-container>
   </tbody>

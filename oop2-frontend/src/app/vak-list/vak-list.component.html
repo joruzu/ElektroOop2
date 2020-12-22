@@ -1,4 +1,21 @@
-<h2>Vakken</h2>
+<div class="row" style="padding: 15px">
+  <h2>Vakkenlijst</h2>
+  <button (click)="goToAddVak()"
+          class="btn btn-light btn-outline-primary"
+          style="margin-left: 20px; height: 40px">Add Vak</button>
+</div>
+
+<label style="margin-left: 10px">semester:</label>
+<select class="input" id="semester" [(ngModel)]="semester" name="semester" style="margin-left: 10px">
+  <option hidden disabled>all</option>
+  <option value=0>all</option>
+  <option *ngFor="let semes of semesters" [value]='semes'>{{semes}}</option>
+</select>
+<label *ngIf="semester==5" style="margin-left: 40px">orientatie:</label>
+<select class="input" id="orientatie" [(ngModel)]="orientatie" name="orientatie" *ngIf="semester==5" style="margin-left: 10px">
+  <option hidden disabled>any</option>
+  <option *ngFor="let orient of orientaties" [value]="orient">{{orient}}</option>
+</select>
 
 <table class="table table-hover">
   <thead>
@@ -13,7 +30,9 @@
   </thead>
   <tbody>
     <ng-container *ngFor="let vak of vakken">
-      <tr>
+      <tr *ngIf="semester==0||vak.semester==semester&&semester!=5||
+      vak.semester==semester&&semester==5&&vak.vak_orientatie==orientatie||
+      vak.semester==semester&&semester==5&&orientatie=='any'">
         <td>{{vak.idvak}}</td>
         <td>{{vak.vak_naam}}</td>
         <td>{{vak.studiepunten}}</td>
@@ -21,7 +40,13 @@
         <td>{{vak.vak_orientatie}}</td>
         <td>
           <button (click)="goToVakRapport(vak.idvak)"
-                  class="btn btn-primary">Cijferlijst</button>
+                  class="btn btn-light btn-outline-primary">Cijferlijst</button>
+          <button (click)="goToUpdateVak(vak.idvak)"
+                  class="btn btn-light btn-outline-primary"
+                  style="margin-left: 5px">Edit Vak</button>
+          <button (click)="deleteVak(vak.idvak, vak.vak_naam)"
+                  class="btn btn-light btn-outline-danger"
+                  style="margin-left: 5px">Delete Vak</button>
         </td>
       </tr>
     </ng-container>

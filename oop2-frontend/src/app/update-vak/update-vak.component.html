@@ -1,0 +1,34 @@
+<div class="container">
+  <h3 style="padding: 10px">Edit Vak {{vak.idvak}}</h3>
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Vak Naam</label>
+      <input type="text" class="form-control" id="vak_naam"
+             [(ngModel)]="vak.vak_naam" name="vak_naam" required #vak_naam="ngModel">
+      <div [hidden]="vak_naam.valid || vak_naam.pristine" class="alert alert-danger">Vak Naam is required</div>
+    </div>
+    <div class="form-group">
+      <label>Aantal Studiepunten</label>
+      <input type="text" class="form-control" id="studiepunten"
+             [(ngModel)]="vak.studiepunten" name="studiepunten" placeholder="In puntnotatie vb. 2.0 | 3.5 | etc." required #studiepunten="ngModel">
+      <div [hidden]="studiepunten.valid || studiepunten.pristine" class="alert alert-danger">Aantal Studiepunten is required</div>
+    </div>
+    <div class="form-group">
+      <label>Semester</label>
+      <select class="form-control" id="semester" [(ngModel)]="vak.semester" name="semester" required>
+        <option *ngFor="let semester of semesters" [value]="semester">{{semester}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Orientatie</label>
+      <select class="form-control" id="vak_orientatie" [(ngModel)]="vak.vak_orientatie" name="vak_orientatie" required>
+        <option *ngFor="let orientatie of orientaties" [value]="orientatie">{{orientatie}}</option>
+      </select>
+    </div>
+
+    <button class="btn btn-success" type="submit">Update</button>
+    <div style="height: 20px"></div>
+  </form>
+</div>
+

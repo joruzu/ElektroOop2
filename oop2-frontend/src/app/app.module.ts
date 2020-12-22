@@ -12,6 +12,9 @@ import { UpdateStudentComponent } from './update-student/update-student.componen
 import { StudentRapportComponent } from './student-rapport/student-rapport.component';
 import { VakListComponent } from './vak-list/vak-list.component';
 import { VakRapportComponent } from './vak-rapport/vak-rapport.component';
+import { CreateVakComponent } from './create-vak/create-vak.component';
+import { UpdateVakComponent } from './update-vak/update-vak.component';
+import { CreateRapportVakComponent } from './create-rapport-vak/create-rapport-vak.component';
 
 
 @NgModule({
@@ -23,7 +26,10 @@ import { VakRapportComponent } from './vak-rapport/vak-rapport.component';
     UpdateStudentComponent,
     StudentRapportComponent,
     VakListComponent,
-    VakRapportComponent
+    VakRapportComponent,
+    CreateVakComponent,
+    UpdateVakComponent,
+    CreateRapportVakComponent
   ],
   imports: [
     BrowserModule,

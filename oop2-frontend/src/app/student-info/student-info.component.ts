@@ -32,4 +32,18 @@ export class StudentInfoComponent implements OnInit {
     this.router.navigate(['studenten']);
   }
 
+  goToStudentRapport(studid: number) {
+    this.router.navigate(['studenten', studid, 'rapport']);
+  }
+
+  deleteStudent(studid: number, voornaam: string, achternaam: string) {
+    if(confirm("Are you sure you want to delete student: " + studid + " " + voornaam + " " + achternaam + "?\n" +
+      "(Please make sure there are no entries in this student's rapport before deleting)")) {
+      this.studentService.deleteStudent(studid).subscribe(data => {
+        console.log(data);
+        this.goToStudentList();
+      });
+    }
+  }
+
 }
