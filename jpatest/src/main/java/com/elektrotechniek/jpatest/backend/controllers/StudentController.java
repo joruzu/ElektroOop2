@@ -40,11 +40,6 @@ public class StudentController {
                 orElseThrow(() -> new StudentNotFoundException(id));
     }
 
-    @RequestMapping(value = "/students/byname", method = RequestMethod.GET)
-    List<Student> byName(@RequestParam(value="name") String name) {
-        return studentRepository.findByNaamLike("%"+name+"%");
-    }
-
     @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping("/students/{id}")
     Student replaceStudent(@RequestBody Student newStudent, @PathVariable Integer id){
@@ -65,6 +60,7 @@ public class StudentController {
                 });
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/students/{id}")
     void deleteEmployee(@PathVariable Integer id){
         studentRepository.deleteById(id);
