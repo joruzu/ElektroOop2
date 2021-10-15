@@ -24,11 +24,12 @@ CREATE TABLE `vak` (
 
 
 CREATE TABLE `rapport` (
+  `rapport_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `student_studentennummer` int(10) NOT NULL,
   `vak_idvak` int(5) NOT NULL,
   `datum` date NOT NULL,
   `cijfer` float DEFAULT NULL,
-  PRIMARY KEY (`student_studentennummer`,`vak_idvak`,`datum`),
+  PRIMARY KEY (`rapport_id`),
   KEY `fk_student_has_vak_vak1_idx` (`vak_idvak`),
   KEY `fk_student_has_vak_student_idx` (`student_studentennummer`),
   CONSTRAINT `fk_student_has_vak_student` FOREIGN KEY (`student_studentennummer`) REFERENCES `student` (`studentennummer`) ON DELETE NO ACTION ON UPDATE NO ACTION,
